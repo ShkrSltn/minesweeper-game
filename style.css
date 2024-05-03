@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
 html {
     box-sizing: border-box;
 }
@@ -6,7 +8,7 @@ html {
     margin: 0px;
     padding: 0px;
     box-sizing: inherit;
-    font-family: sans-serif;
+    font-family: Montserrat, sans-serif;
 }
 
 body {
@@ -22,7 +24,8 @@ body.victory {
     background-color: rgb(158, 221, 143);
 }
 
-header, #message {
+header,
+#message {
     margin-top: 50px;
     text-align: center;
 }
@@ -46,7 +49,7 @@ header, #message {
     height: 40px;
     border: rgb(110, 113, 116) solid 1px;
     text-align: center;
-    vertical-align : middle;
+    vertical-align: middle;
     font-size: 16px;
     line-height: 40px;
     font-weight: 900;
@@ -59,4 +62,13 @@ header, #message {
 
 .discovered {
     background-color: rgb(177, 177, 177);
+}
+
+#shift-message {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#shift-message em {
+    color: red;
 }
