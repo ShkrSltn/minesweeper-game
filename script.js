@@ -39,9 +39,7 @@ for (var row = 0; row < ROWS_COUNT; row++) {
 //                Add a BOMBS_COUNT constant so that you can easily change the amount of bombs placed. Put it next to the
 //                other constants.
 //
-
-
-for (let i = 0; i <= BOMBS_COUNT; i++) {
+for (let i = 0; i < BOMBS_COUNT; i++) {
   let randomRow = Math.floor(Math.random() * ROWS_COUNT);
   let randomColumn = Math.floor(Math.random() * COLS_COUNT);
   cells[randomRow][randomColumn].isBomb = true;
@@ -82,12 +80,54 @@ function flagCell(row, col) {
 // passed to the functionn
 function countAdjacentBombs(row, col) {
   //
-
   // TODO: Task 4 - Adjacent bombs are bombs in cells touching our cell (also diagonally). Implement this function
   //                so that it returns the count of adjacent cells with bombs in them. 
-  //
-  return 1;
+
+  let bombCounter = 0;
+
+  // left
+  if (row > 0 && col > 0 && cells[row - 1][col - 1].isBomb) {
+    bombCounter++;
+  }
+
+  // top
+  if (row > 0 && cells[row - 1][col].isBomb) {
+    bombCounter++;
+  }
+
+  // top right
+  if (row > 0 && col < COLS_COUNT - 1 && cells[row - 1][col + 1].isBomb) {
+    bombCounter++;
+  }
+
+  //left
+  if (col > 0 && cells[row][col - 1].isBomb) {
+    bombCounter++;
+  }
+
+  //right
+  if (col < COLS_COUNT - 1 && cells[row][col + 1].isBomb) {
+    bombCounter++;
+  }
+
+  // bottom left
+  if (row < ROWS_COUNT - 1 && col > 0 && cells[row + 1][col - 1].isBomb) {
+    bombCounter++;
+  }
+
+  // bottom
+  if (row < ROWS_COUNT - 1 && cells[row + 1][col].isBomb) {
+    bombCounter++;
+  }
+
+  // Bottom right
+  if (row < ROWS_COUNT - 1 && col < COLS_COUNT - 1 && cells[row + 1][col + 1].isBomb) {
+    bombCounter++;
+  }
+
+  return bombCounter;
 }
+
 
 function getBombsCount() {
   //
