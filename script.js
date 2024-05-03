@@ -4,7 +4,8 @@
 const CHEAT_REVEAL_ALL = true;
 
 const ROWS_COUNT = 10;
-const COLS_COUNT = 10;
+const COLS_COUNT = 15;
+const BOMBS_COUNT = 15;
 
 var defeat = false;
 var victory = false;
@@ -39,15 +40,12 @@ for (var row = 0; row < ROWS_COUNT; row++) {
 //                other constants.
 //
 
-const countsOfRowsAndColumns = ROWS_COUNT;
-for (let i = 0; i <= countsOfRowsAndColumns; i++) {
-  let randomRow = Math.floor(Math.random() * 9);
-  let randomColumn = Math.floor(Math.random() * 9);
+
+for (let i = 0; i <= BOMBS_COUNT; i++) {
+  let randomRow = Math.floor(Math.random() * ROWS_COUNT);
+  let randomColumn = Math.floor(Math.random() * COLS_COUNT);
   cells[randomRow][randomColumn].isBomb = true;
 }
-
-
-
 
 
 // Once the game has been initialized, we "render" it.
@@ -61,6 +59,7 @@ render();
 function discoverCell(row, col) {
   //
   // TODO: Task 5 - Reveal cells when clicked.
+
   //
 
   //
@@ -83,6 +82,7 @@ function flagCell(row, col) {
 // passed to the functionn
 function countAdjacentBombs(row, col) {
   //
+
   // TODO: Task 4 - Adjacent bombs are bombs in cells touching our cell (also diagonally). Implement this function
   //                so that it returns the count of adjacent cells with bombs in them. 
   //
