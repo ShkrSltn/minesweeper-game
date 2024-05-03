@@ -33,7 +33,6 @@ for (var row = 0; row < ROWS_COUNT; row++) {
 //cells[9][9].isBomb = true;
 
 
-
 //
 // TODO: Task 2 - Comment out the code of task 1. Instead of adding bombs in fixed places, add 10 of them in random places.
 //                Add a BOMBS_COUNT constant so that you can easily change the amount of bombs placed. Put it next to the
@@ -57,13 +56,33 @@ render();
 function discoverCell(row, col) {
   //
   // TODO: Task 5 - Reveal cells when clicked.
-  cells[row][col].discovered = true;
+
   //
+  if (row < 0 || row >= ROWS_COUNT || col < 0 || col >= COLS_COUNT) {
+    console.log("this called");
+    return;
+  }
+
+  if (cells[row][col].isBomb == true) {
+    defeat = true;
+  }
+
+  if (cells[row][col].discovered == true) {
+    return;
+  }
+  cells[row][col].discovered = true;
+
 
   //
   // TODO: Task 6 - Discover neighbor cells recursively, as long as there are no adjacent bombs to the current cell.
+  //discoverCell();
 
-  //
+  if (countAdjacentBombs(row, col) == 0) {
+    discoverCell(row, col + 1);
+    discoverCell(row, col - 1);
+    discoverCell(row + 1, col);
+    discoverCell(row - 1, col);
+  }
 
   //
   // TODO: Task 8 - Implement defeat. If the player "discovers" a bomb (clicks on it without holding shift), set the variable defeat to true.
@@ -86,7 +105,7 @@ function countAdjacentBombs(row, col) {
 
   let bombCounter = 0;
 
-  // left
+  // top left
   if (row > 0 && col > 0 && cells[row - 1][col - 1].isBomb) {
     bombCounter++;
   }
